@@ -195,7 +195,7 @@ typedef struct {
 } TEffectCondition;
 
 ///effect
-#define USB_DURATION_INFINITE		0x7FFF
+#define USB_DURATION_INFINITE		0xFFFF
 
 #define USB_EFFECT_CONSTANT	  		0x01
 #define USB_EFFECT_RAMP				0x02
