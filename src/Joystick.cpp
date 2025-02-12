@@ -771,9 +771,9 @@ inline int32_t Joystick_::ApplyEnvelope(volatile TEffectState& effect, int32_t v
 		return value;
 	}
 
-	int32_t magnitude = ApplyGain(effect.magnitude, effect.gain);
-	int32_t attackLevel = ApplyGain(effect.attackLevel, effect.gain);
-	int32_t fadeLevel = ApplyGain(effect.fadeLevel, effect.gain);
+	int32_t magnitude = effect.magnitude;
+	int32_t attackLevel = effect.attackLevel;
+	int32_t fadeLevel = effect.fadeLevel;
 	int32_t newValue = magnitude;
 	int32_t attackTime = effect.attackTime;
 	int32_t fadeTime = effect.fadeTime;
