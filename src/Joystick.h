@@ -264,6 +264,7 @@ public:
 	void setSteering(int16_t value);
 
 	void setButton(uint8_t button, uint8_t value);
+	void setAllButtons(uint8_t* buttonValues);
 	void pressButton(uint8_t button);
 	void releaseButton(uint8_t button);
 	void setHatSwitch(int8_t hatSwitch, int16_t value);

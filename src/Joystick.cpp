@@ -794,6 +794,14 @@ void Joystick_::end()
 {
 }
 
+void Joystick_::setAllButtons(uint8_t *buttonValues)
+{
+	for (uint8_t i = 0; i < Joystick_::_buttonCount; i++)
+	{
+		Joystick_::setButton(i, buttonValues[i]);
+	}
+}
+
 void Joystick_::setButton(uint8_t button, uint8_t value)
 {
 	if (value == 0)
