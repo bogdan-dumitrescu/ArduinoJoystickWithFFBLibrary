@@ -60,7 +60,7 @@ typedef struct //FFB: Set Effect Output Report
 	uint8_t	enableAxis; // bits: 0=X, 1=Y, 2=DirectionEnable
 	uint8_t	directionX;	// angle (0=0 .. 255=360deg)
 	uint8_t	directionY;	// angle (0=0 .. 255=360deg)
-	//	uint16_t	startDelay;	// 0..32767 ms
+	uint16_t startDelay; // 0..32767 ms
 } USB_FFBReport_SetEffect_Output_Data_t;
 
 typedef struct//FFB: Set Envelope Output Report
