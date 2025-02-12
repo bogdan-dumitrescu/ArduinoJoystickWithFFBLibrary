@@ -597,8 +597,6 @@ void Joystick_::forceCalculator(int32_t* forces) {
 	auto deviceGain = map(DynamicHID().pidReportHandler.deviceGain.gain, 0, 255, 0, 100);
 	forces[0] = (int32_t)((float)1.0 * forces[0] * m_gains[0].totalGain * deviceGain / 1000000); // each effect gain * total effect gain * device gain = 1000000
 	forces[1] = (int32_t)((float)1.0 * forces[1] * m_gains[1].totalGain * deviceGain / 1000000); // each effect gain * total effect gain * device gain = 1000000
-	forces[0] = map(forces[0], -10000, 10000, -250, 250);
-	forces[1] = map(forces[1], -10000, 10000, -250, 250);
 }
 
 int32_t Joystick_::ConstantForceCalculator(volatile TEffectState& effect) 
