@@ -631,18 +631,18 @@ int32_t Joystick_::SquareForceCalculator(volatile TEffectState& effect)
 
 int32_t Joystick_::SinForceCalculator(volatile TEffectState& effect) 
 {
-	int16_t offset = effect.offset * 2;
-	int16_t magnitude = effect.magnitude;
-	uint16_t phase = effect.phase;
-	uint16_t timeTemp = effect.elapsedTime;
 	uint16_t period = effect.period;
-	float angle = 0.0;
-	if(period != 0)
-		angle = ((timeTemp * 1.0 / period) * 2 * PI + (phase / 36000.0));
-	float sine = sin(angle);
-	int32_t tempforce = (int32_t)(sine * magnitude);
-	tempforce += offset;
-	return ApplyEnvelope(effect, tempforce);
+
+	float sine = 1.0;
+	if (period != 0)
+	{
+		float angle = ((float)effect.elapsedTime / period) * 2 * PI + (effect.phase / 36000.0);
+		sine = sin(angle);
+	}
+
+	int32_t force = (int32_t)(sine * effect.magnitude) + effect.offset * 2; // why times two?
+
+	return ApplyEnvelope(effect, force);
 }
 
 int32_t Joystick_::TriangleForceCalculator(volatile TEffectState& effect)
