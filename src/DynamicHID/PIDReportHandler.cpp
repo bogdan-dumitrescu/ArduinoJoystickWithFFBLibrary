@@ -50,16 +50,16 @@ void PIDReportHandler::StopEffect(uint8_t id)
 	if (id > MAX_EFFECTS)
 		return;
 	g_EffectStates[id].state &= ~MEFFECTSTATE_PLAYING;
-	pidBlockLoad.ramPoolAvailable += SIZE_EFFECT;
 }
 
 void PIDReportHandler::FreeEffect(uint8_t id)
 {
 	if (id > MAX_EFFECTS)
 		return;
-	g_EffectStates[id].state = 0;
+	g_EffectStates[id].state = MEFFECTSTATE_FREE;
 	if (id < nextEID)
 		nextEID = id;
+	pidBlockLoad.ramPoolAvailable += SIZE_EFFECT;
 }
 
 void PIDReportHandler::FreeAllEffects(void)
