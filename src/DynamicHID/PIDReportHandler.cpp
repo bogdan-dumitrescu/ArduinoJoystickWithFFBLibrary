@@ -232,7 +232,7 @@ void PIDReportHandler::CreateNewEffect(USB_FFBReport_CreateNewEffect_Feature_Dat
 	}
 }
 
-void PIDReportHandler::UppackUsbData(uint8_t* data, uint16_t len)
+void PIDReportHandler::UnpackUsbData(uint8_t *data, uint16_t len)
 {
 	//Serial.print("len:");
 	//Serial.println(len);

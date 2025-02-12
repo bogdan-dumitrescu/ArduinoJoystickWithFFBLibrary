@@ -45,7 +45,7 @@ public:
 
 	// Handle incoming data from USB
 	void CreateNewEffect(USB_FFBReport_CreateNewEffect_Feature_Data_t* inData);
-	void UppackUsbData(uint8_t* data, uint16_t len);
+	void UnpackUsbData(uint8_t* data, uint16_t len);
 	uint8_t* getPIDPool();
 	uint8_t* getPIDBlockLoad();
 	uint8_t* getPIDStatus();

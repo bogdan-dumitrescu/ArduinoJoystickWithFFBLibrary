@@ -123,7 +123,7 @@ Joystick_::Joystick_(
 	tempHidReportDescriptor[hidReportDescriptorSize++] = 0x01;
     // REPORT_ID (Default: 1)
     tempHidReportDescriptor[hidReportDescriptorSize++] = 0x85;
-    tempHidReportDescriptor[hidReportDescriptorSize++] = 0x01;
+    tempHidReportDescriptor[hidReportDescriptorSize++] = _hidReportId;
 
 	// COLLECTION (Physical)
 	tempHidReportDescriptor[hidReportDescriptorSize++] = 0xa1;
