@@ -636,11 +636,11 @@ int32_t Joystick_::SinForceCalculator(volatile TEffectState& effect)
 	float sine = 1.0;
 	if (period != 0)
 	{
-		float angle = ((float)effect.elapsedTime / period) * 2 * PI + (effect.phase / 36000.0);
+		float angle = (2.0f * USB_PI * effect.elapsedTime / period + effect.phase) / USB_NORM;
 		sine = sin(angle);
 	}
 
-	int32_t force = (int32_t)(sine * effect.magnitude) + effect.offset * 2; // why times two?
+	int32_t force = (int32_t)(sine * effect.magnitude) + effect.offset; // why times two?
 
 	return ApplyEnvelope(effect, force);
 }
