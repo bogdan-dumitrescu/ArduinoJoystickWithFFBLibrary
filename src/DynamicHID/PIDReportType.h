@@ -194,8 +194,7 @@ typedef struct {
 	
 } TEffectCondition;
 
-#define USB_PI		3141
-#define USB_NORM    1000.0f
+#define USB_MAX_PHASE 6283.0f
 
 ///effect
 #define USB_DURATION_INFINITE		0xFFFF

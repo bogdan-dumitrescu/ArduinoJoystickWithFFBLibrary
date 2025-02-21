@@ -632,15 +632,16 @@ int32_t Joystick_::SquareForceCalculator(volatile TEffectState& effect)
 int32_t Joystick_::SinForceCalculator(volatile TEffectState& effect) 
 {
 	uint16_t period = effect.period;
+	float phaseNormalized = effect.phase / USB_MAX_PHASE;
 
 	float sine = 1.0;
 	if (period != 0)
 	{
-		float angle = (2.0f * USB_PI * effect.elapsedTime / period + effect.phase) / USB_NORM;
+		float angle = 2.0f * M_PI * effect.elapsedTime / period + phaseNormalized;
 		sine = sin(angle);
 	}
 
-	int32_t force = (int32_t)(sine * effect.magnitude) + effect.offset; // why times two?
+	int32_t force = (int32_t)(sine * effect.magnitude) + effect.offset;
 
 	return ApplyEnvelope(effect, force);
 }
