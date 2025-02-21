@@ -29,7 +29,7 @@
   // The following values are the same as AVR's USBAPI.h
   // Reproduced here because SAM doesn't have these in
   // its own USBAPI.H
-  #define USB_EP_SIZE 64
+  #define USB_EP_SIZE EP0_SIZE
   #define TRANSFER_PGM 0x80
 
   #include "USB/PluggableUSB.h"
@@ -135,7 +135,12 @@ protected:
   uint8_t getShortName(char* name);
 
 private:
+  #ifdef _VARIANT_ARDUINO_DUE_X_
+  uint32_t epType[2];
+  #else
   uint8_t epType[2];
+  #endif
+
   uint8_t out_ffbdata[USB_EP_SIZE];
   DynamicHIDSubDescriptor* rootNode;
   uint16_t descriptorSize;

@@ -26,6 +26,9 @@
 #ifdef _VARIANT_ARDUINO_DUE_X_
 #define USB_SendControl USBD_SendControl
 #define USB_Send USBD_Send
+#define USB_Recv USBD_Recv
+#define USB_Available USBD_Available
+#define USB_RecvControl USBD_RecvControl
 #endif
 
 DynamicHID_& DynamicHID()
@@ -141,7 +144,7 @@ bool DynamicHID_::GetReport(USBSetup& setup) {
 	if (report_type == DYNAMIC_HID_REPORT_TYPE_FEATURE) {
 		if ((report_id == 6))// && (gNewEffectBlockLoad.reportId==6))
 		{
-			_delay_us(500);
+			delayMicroseconds(500);
 			USB_SendControl(TRANSFER_RELEASE, pidReportHandler.getPIDBlockLoad(), sizeof(USB_FFBReport_PIDBlockLoad_Feature_Data_t));
 			pidReportHandler.pidBlockLoad.reportId = 0;
 			return (true);
