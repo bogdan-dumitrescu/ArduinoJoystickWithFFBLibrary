@@ -2,6 +2,14 @@
 
 ## Statement
 
+### v1.1.0-WH fork
+
+This fork removes some of the features from the original project (multi-axis support, angle in FFB calculations), but fixes FFB related bugs. Especially racing-game related, as I am actively using this library to drive the FFB of a steering wheel. It also adds Arduino Due support (100% tested & working). Please note that [a custom core](https://github.com/bogdan-dumitrescu/ArduinoCore-sam) is needed for Arduino Due to function correctly as an USB device.
+
+I originally intented to backport some of my fixes into the original project, but I received no answer to my PR. Since then, I've made some major changes to the way force feedback is calculated, making merging back changes improbable. 
+
+There's most likely still a couple of bugs hiding in here, and maybe some of the calculations can still be improved. I'm open to suggestions, please feel free to open an issue or a PR.
+
 ### The v1.0.0 new version library is now available, with the following major updates:
 
 1.Fixed an issue where frame rates decrease in certain games after connecting a force feedback controller. Due to issues with the mechanism by which some games send force feedback data, the Arduino did not promptly notify the computer upon receiving the force feedback data, resulting in lost frames in these games. To resolve this problem, the reception of force feedback data has been moved to be handled within an ISR (Interrupt Service Routine) on the Arduino, which means that some interfaces have undergone changes compared to v0.9.0. Example code will be provided to demonstrate the corresponding modifications. This fix has been tested and confirmed working in games such as 'Horizon 4' and 'Horizon 5'.
